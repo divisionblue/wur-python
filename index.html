@@ -1,35 +1,80 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>Python and GIS</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Roboto:300);
       @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
+      body{
         font-family: 'Roboto';
         font-weight: 300;
+        color: #f3f3f3;
+        background: #00BCD4;
+      }
+      h1, h2, h3 {
+        font-weight: 500; 
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
       .remark-slide-content {
         font-size: 24px;
       }
-      h2#ember {color: #F23818;}
+
+      .inverse {
+        text-shadow: 0 0 5px #333;
+        background: #00BCD4;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
     </style>
   </head>
 <body>
  <textarea id="source">
-  class: center, middle
-  # Learn yourself a Python for greater good
+
+class: center, middle, inverse
+
+# Learn yourself a Python for greater good
+Nelen &amp; Schuurmans in your area.
+
 ---
 
 # Arjen
 A monkey by day. A priest by night
+
 --- 
 
 # Fritz
 A dillweed by night. A leper by day.
+
+---
+
+# Outline
+
+* Introduction
+* Data collection
+* Analysis
+* Presentation
+
+---
+
+# Introduction
+
+* Web vs Desktop
+* Geojson vs Shapefile
+
+---
+
+
+---
+
+```python
+from osgeo import gdal
+
+```
+
+---
  </textarea>
    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
    </script>
