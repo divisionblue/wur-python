@@ -9,7 +9,6 @@
       body{
         font-family: 'Roboto';
         font-weight: 300;
-        color: #f3f3f3;
         background: #00BCD4;
       }
       h1, h2, h3 {
@@ -41,12 +40,12 @@ Nelen &amp; Schuurmans in your area.
 ---
 
 # Arjen
-A monkey by day. A priest by night
+Developer by day. Poet by night.
 
 --- 
 
 # Fritz
-A dillweed by night. A leper by day.
+Developer by day. Musician by night.
 
 ---
 
@@ -66,15 +65,47 @@ A dillweed by night. A leper by day.
 
 ---
 
+# Data collection
+
+1. File with names of cities
+2. Find geocoordinate with Google API
+3. Get elevation information with Lizard API
+4. Interpolate elevation
 
 ---
+# Requirements
 
-```python
-from osgeo import gdal
-
+```bash
+pip install requests
+git clone https://github.com/divisionblue/LYAP.git
+cd LYAP
+python 
 ```
 
 ---
+# Show me the code
+```python
+import requests
+
+r = requests.get("https://maps.googleapis.com/maps/api/geocode/json?address=Droevendaalsesteeg,Wageningen")
+data = r.json()
+
+```
+---
+CSV uitlezen in fiona omzetten naar shapefile, met punten.
+API aanroepen van Google.
+Steden omzetten naar Python obj, Fiona Point().
+As wkt voor Hoogte AHN.
+As wkt voor Hoogte World.
+Evt nog landgebruik.
+
+RMSE for verschillen.
+Interpolatie.
+
+Export: csv, json, shp, png.
+
+---
+
  </textarea>
    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
    </script>
