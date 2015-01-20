@@ -58,9 +58,13 @@ https://nxt.lizard.net
 # Outline
 
 * Introduction.
+
 * Use case.
+
 * Data collection.
+
 * Analysis.
+
 * Presentation.
 
 ---
@@ -68,14 +72,18 @@ https://nxt.lizard.net
 # Introduction
 
 * Web vs Desktop.
+
 * Geojson vs Shapefile.
+
 * Programming vs. Software engineering.
 
 ---
 
 # Python
 
-Recently Brian Timoney and James Fee have been writing about how geospatial work is more and more programming and less GUI-driven operations in the ArcGIS mold. They’ve been pointing a lot to Python for this.
+Recently Brian Timoney and James Fee have been writing about how geospatial work is more and more programming and less GUI-driven operations in the ArcGIS mold. 
+
+They’ve been pointing a lot to Python for this.
 
 (Tom Macwright, 2012, http://www.macwright.org/2012/10/31/gis-with-python-shapely-fiona.html)
 
@@ -83,7 +91,11 @@ Recently Brian Timoney and James Fee have been writing about how geospatial work
 
 # Use case
 
-Your colleague from the social studies department wants to know the approximate height of a bunch of cities so he can investigate if there is a correlation between criminal behaviour and living below the sea level. He thinks programming is clicking through wizards in Excel and that a big file means > 10MB. He sends you an Excel spreadsheet with the names of the cities and expects an answer by 17:00 this afternoon. He agreed with the PR & marketing department that they will release a press release next week.
+Your colleague from the social studies department wants to know the approximate height of a bunch of cities so he can investigate if there is a correlation between criminal behaviour and living below the sea level. 
+
+He thinks programming is clicking through wizards in Excel and that a big file means > 10MB.
+
+He sends you an Excel spreadsheet with the names of the cities and expects an answer by 17:00 this afternoon. He agreed with the PR & marketing department that they will release a press release next week.
 
 ---
 
@@ -92,6 +104,7 @@ Your colleague from the social studies department wants to know the approximate 
 ## Your boss gets angry problems
 
 * You don't know the geo-location of the cities.
+
 * You know your department has access to the latest DEM of The Netherlands (AHN2) but it's too big to load in ArcGIS.
 
 ---
@@ -101,6 +114,7 @@ Your colleague from the social studies department wants to know the approximate 
 ## Your boss didn't expect you to also solve these problems
 
 * The web guy from the marketing department wants to make an interactive online map and needs the data in Geojson.
+
 * Some of the international students heard of the project and inquired if it would be possible to get the difference between the AHN2 and the world DEM they are using so they get a sense of the accuracy of the world DEM. They are nice guys so they don't ask you to do crazy stuff, just hand over a shapefile.
 
 ---
@@ -110,6 +124,7 @@ Your colleague from the social studies department wants to know the approximate 
 ## Your boss will suggest you for promotion problems
 
 * Additionaly, for each city you give the major land use classes and soil types so the people in the environmental sciences departments.
+
 * You not only give the height of each city but also the height along a line between 2 or possibly more cities; height profile graphs.
 
 ---
@@ -160,6 +175,7 @@ data = r.json()
 # Analysis
 
 1. Calculate the differences between AHN2 and world DEM.
+
 2. Interpolation (?).
 
 ---
@@ -178,8 +194,11 @@ import requests
 # Presentation
 
 1. Write as CSV.
+
 2. Write as Geojson.
+
 3. Write as shapefile.
+
 4. Write as PNG.
 
 ---
@@ -198,7 +217,9 @@ import requests
 # Synopsis
 
 * Programming is no longer a specialist job.
+
 * Data and algorithms are no longer centralised but distributed.
+
 * Python is great as a glue, data crunching language between web, server, modeling and Desktop GIS.
 
 * Programming is not the same as Software engineering.
