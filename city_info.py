@@ -1,5 +1,7 @@
-from fiona import collection
 from shapely.geometry import mapping
+
+from input_output import read_txt
+from input_output import write_shape
 
 from apis import get_latlong
 from apis import get_height_ahn2
@@ -26,35 +28,39 @@ schema = {'geometry': 'Point',
                          'landuse': 'str',
                          'soil': 'str'}}
 
-# open cities file and get data for every city
-with open(in_cities, 'r') as cities:
-    results = []
-    for city in cities:
-        city = city.strip()
-        # get location from google
-        location = get_latlong(city)
-        # build geometry
-        geometry = point(location['lng'], location['lat'])
-        geometry_wkt = geometry.wkt
-        # get info from lizard
-        height_ahn2 = get_height_ahn2(geometry_wkt)
-        height_world = get_height_world(geometry_wkt)
-        height_difference = float(height_ahn2) - float(height_world)
-        landuse = get_landuse(geometry_wkt)
-        soil = get_soil(geometry_wkt)
+# we want to store each result in a list
+results = []
 
-        results.append({"geometry": mapping(geometry),
-                        "properties": {"city": city,
-                                       "height_ahn2": height_ahn2,
-                                       "height_world": height_world,
-                                       "height_difference": height_difference,
-                                       "landuse": landuse,
-                                       "soil": soil}})
+# read text file with cities
+cities = read_txt(in_cities)
+
+# main loop
+for city in cities:
+    city = city.strip()
+    print city
+    # get location from google
+    location = get_latlong(city)
+    # build geometry
+    geometry = point(location['lng'], location['lat'])
+    geometry_wkt = geometry.wkt
+    print geometry_wkt
+    # get info from lizard
+    height_ahn2 = get_height_ahn2(geometry_wkt)
+    height_world = get_height_world(geometry_wkt)
+    height_difference = float(height_ahn2) - float(height_world)
+    landuse = get_landuse(geometry_wkt)
+    soil = get_soil(geometry_wkt)
+
+    results.append({"geometry": mapping(geometry),
+                    "properties": {"city": city,
+                                   "height_ahn2": height_ahn2,
+                                   "height_world": height_world,
+                                   "height_difference": height_difference,
+                                   "landuse": landuse,
+                                   "soil": soil}})
 
 # save results to a shapefile
-with collection(out_shape, "w", "ESRI Shapefile", schema) as output:
-    for result in results:
-        output.write(result)
+write_shape(out_shape, schema, results)
 
 # build a linestring from an array of cities
 city_route = line([result['geometry']['coordinates'] for result in results])
