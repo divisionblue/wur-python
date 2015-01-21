@@ -179,7 +179,8 @@ or check: https://pip.pypa.io/en/latest/installing.html
 ```python
 import requests
 
-r = requests.get("https://maps.googleapis.com/maps/api/geocode/json?address=Droevendaalsesteeg,Wageningen")
+r = requests.get("https://maps.googleapis.com/maps/api/geocode/json"
+                 "?address=Droevendaalsesteeg,Wageningen")
 data = r.json()
 
 ```
