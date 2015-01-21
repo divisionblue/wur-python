@@ -1,2 +1,2 @@
 # wur-python
-Python is your friend. :dancer: :scream:
+Python is your friend. :dancer: :scream: :turd:
