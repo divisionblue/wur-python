@@ -22,7 +22,7 @@ def get_height_ahn2(wkt_point):
     @returns: height in m NAP.
     """
     r = requests.get("https://nxt.staging.lizard.net/api/v1/rasters/?page_size=0&agg=curve&geom={}&raster_names=dem%2Fnl&srs=EPSG:4326&start=2015-01-14T21:01:01&stop=2015-01-21T21:01:01&window=3600000".format(wkt_point), verify=False)
-    height = r.json()[0][0]
+    height = r.json()['data'][0][0]
 
     return height
 
@@ -34,7 +34,7 @@ def get_height_world(wkt_point):
     @returns: height in m.
     """
     r = requests.get("https://nxt.staging.lizard.net/api/v1/rasters/?page_size=0&agg=curve&geom={}&raster_names=world_dem&srs=EPSG:4326&start=2015-01-14T21:01:01&stop=2015-01-21T21:01:01&window=3600000".format(wkt_point), verify=False)
-    height = r.json()[0][0]
+    height = r.json()['data'][0][0]
 
     return height
 
@@ -46,7 +46,7 @@ def get_soil(wkt_point):
     @returns: soil class.
     """
     r = requests.get("https://nxt.staging.lizard.net/api/v1/rasters/?page_size=0&agg=counts&geom={}&raster_names=soil&srs=EPSG:4326&start=2015-01-14T21:01:01&stop=2015-01-21T21:01:01&styles=pawn&window=3600000".format(wkt_point), verify=False)
-    soil = r.json()[0]['label']
+    soil = r.json()['data'][0]['label']
 
     return soil
 
@@ -58,7 +58,7 @@ def get_landuse(wkt_point):
     @returns: landuse class.
     """
     r = requests.get("https://nxt.staging.lizard.net/api/v1/rasters/?page_size=0&agg=counts&geom={}&raster_names=landuse-store&srs=EPSG:4326&start=2015-01-14T21:01:01&stop=2015-01-21T21:01:01&styles=landuse&window=3600000".format(wkt_point), verify=False)
-    landuse = r.json()[0]['label']
+    landuse = r.json()['data'][0]['label']
 
     return landuse
 
